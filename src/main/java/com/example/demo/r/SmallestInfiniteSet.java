@@ -1,6 +1,7 @@
 package com.example.demo.r;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 public class SmallestInfiniteSet {
@@ -51,6 +52,32 @@ public class SmallestInfiniteSet {
     public static void main(String[] args) {
 
         SmallestInfiniteSet obj = new SmallestInfiniteSet();
+
+        char x = 'a';
+        char y = 'b';
+        String r = String.valueOf(x +  y);
+        System.out.println(r);
+
+        char t = 'a';
+        int t1 = t;
+        System.out.println(t1);
+        byte z = (byte) t;
+        System.out.println(z);
+
+        // Создаем HashMap, которая принимает char в качестве ключа и возвращает строку
+        HashMap<Character, String> charToStringMap = new HashMap<>();
+
+        // Добавляем пары ключ-значение в HashMap
+        for (char c = 'a'; c <= 'z'; c++) {
+            String str = String.valueOf(c);
+            charToStringMap.put(c, str);
+        }
+
+        // Пример использования HashMap
+        char key = 'a';
+        String value = charToStringMap.get(key);
+        System.out.println("Значение для ключа " + key + " в HashMap: " + value);
+
 
 
         obj.addBack(2);
