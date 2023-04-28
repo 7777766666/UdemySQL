@@ -16,20 +16,20 @@ public class PhoneSolutionSend {
 
     public static void main(String[] args) throws IOException {
 
-            try (BufferedReader reader = new BufferedReader(new FileReader("E:\\0\\input.txt"));
-                 BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\0\\output1.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("E:\\0\\input.txt"));
+             BufferedWriter writer = new BufferedWriter(new FileWriter("E:\\0\\output1.txt"))) {
 
-                String s = reader.readLine();
-                PhoneSolution phoneSolution = new PhoneSolution();
-                List<String> list = phoneSolution.letterCombinations(s);
+            String s = reader.readLine();
+            PhoneSolution phoneSolution = new PhoneSolution();
+            List<String> list = phoneSolution.letterCombinations(s);
 
-                System.out.println("Answer return: " + list);
-                writer.write(String.valueOf(list));
-            } catch (FileNotFoundException e) {
-                System.out.println("Ошибка чтения или записи файла: " + e.getMessage());
-                // e.printStackTrace();
-            }
+            System.out.println("Answer return: " + list);
+            writer.write(String.valueOf(list));
+        } catch (FileNotFoundException e) {
+            System.out.println("Ошибка чтения или записи файла: " + e.getMessage());
+            // e.printStackTrace();
         }
+    }
 
 
     public List<String> letterCombinations(String digits) {
@@ -50,8 +50,11 @@ public class PhoneSolutionSend {
         map.put(8, new String[]{"t", "u", "v"});
         map.put(9, new String[]{"w", "x", "y", "z"});
 
-
         String[] split = digits.split("");
+
+        if (length == 1) {
+            return new ArrayList<>(Arrays.asList(map.get(Integer.parseInt(split[0]))));
+        }
 
         int count = 0;
         String[] second = null;
@@ -62,11 +65,6 @@ public class PhoneSolutionSend {
         if (length > 1) second = map.get(Integer.parseInt(split[count++]));
         if (length > 2) third = map.get(Integer.parseInt(split[count++]));
         if (length > 3) fourth = map.get(Integer.parseInt(split[count]));
-
-
-        if (length == 1) {
-            return new ArrayList<>(Arrays.asList(first));
-        }
 
         String[] result2 = new String[first.length * second.length];
         count = 0;
@@ -98,7 +96,6 @@ public class PhoneSolutionSend {
                 result4[count++] = result3[i] + fourth[j];
             }
         }
-
         return new ArrayList<>(Arrays.asList(result4));
     }
 }
