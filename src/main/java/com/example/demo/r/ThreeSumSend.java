@@ -15,7 +15,7 @@ public class ThreeSumSend {
 //        int[] nums = {-1, 0, 1, 2, -1, -4};
 //        int[] nums = {-11, 0, 0, 6, -12, -11, 22, 8, 6, 9, 6, -11, 0, -15, 6};
 //        int[] nums = {-1,-1,-1,1};
-        int[] nums = {0,0,0,0, 4, 5, 5, -4, -9, -9};
+        int[] nums = {-2,-3,0,0,-2};
 
 
         System.out.println(ThreeSumSend.threeSum(nums));
@@ -32,42 +32,12 @@ public class ThreeSumSend {
         }
 
         Arrays.sort(nums);
+        System.out.println(Arrays.toString(nums));
         for (int i = 0; i < length; i++) {
-            if ( nums[i] == 0 && length - i >= 2 && nums[i + 1] == 0 && nums[i + 2] == 0 ){
+            if ( nums[i] == 0 && length - i >= 3 && nums[i + 1] == 0 && nums[i + 2] == 0 ){
                 result.add(Arrays.asList(0, 0 ,0 ));
                 i = 2_000_000;
             }
-        }
-
-        int z = 0;
-        while (nums[z + 1] < 0) {
-            if (nums[z] == nums[z + 1]) {
-                int binar = Arrays.binarySearch(nums, z + 1, length, (nums[z] * (-2)));
-                if (binar >= 0) {
-                    result.add(Arrays.asList(nums[z], nums[z], nums[binar]));
-                }
-            }
-            while ( length - 1 < z && nums[z + 1] == nums[z]) {
-                z++;
-            }
-            z++;
-        }
-        z = length - 1;
-        while (nums[z - 1] > 0) {
-            if (nums[z] == nums[z - 1]) {
-                int binarySearch = Arrays.binarySearch(nums, 0, z, (nums[z] * -2));
-                if (binarySearch >= 0) {
-                    result.add(Arrays.asList(nums[z], nums[z], nums[binarySearch]));
-                }
-            }
-            if (nums[z] == 0 ){
-                z = -999999;
-                break;
-            }
-            while ( 2 < z && nums[z - 1] >= 0 && nums[z - 1] == nums[z]) {
-                z--;
-            }
-            z--;
         }
 
         Set<Integer> set = new HashSet<>();
@@ -93,6 +63,7 @@ public class ThreeSumSend {
 
         int[] uniq = new int[shortLength];
         System.arraycopy(nums, 0, uniq, 0, shortLength);
+        Arrays.sort(uniq);
         for (int i = 0; i < shortLength - 2; i++) {
             for (int j = shortLength - 1; j > i + 1; j--) {
                 for (int k = j - 1; k > i; k--) {
@@ -102,17 +73,14 @@ public class ThreeSumSend {
                 }
             }
         }
+//        -1,0,1,2,-1,-4
 
         for (int i = 0; i < doubl.length; i++) {
-            int binarySearch = Arrays.binarySearch(uniq, 0, uniq.length, doubl[i] * (-2));
+            int binarySearch = Arrays.binarySearch(uniq, 0,uniq.length, doubl[i] * (-2));
             if (binarySearch > -1){
-                result.add(Arrays.asList(doubl[i], doubl[i], doubl[binarySearch]));
+                result.add(Arrays.asList(doubl[i], doubl[i], uniq[binarySearch]));
             }
         }
-
-
-
-
 
         return result;
     }
