@@ -15,16 +15,18 @@ public class LongestCommonPrefix {
         StringBuilder result = new StringBuilder();
         char current = 'z';
         for (int i = 0; i < 200; i++) {
-            Set<Character> set = new HashSet<>();
+
             for (int j = 0; j < strs.length; j++) {
                 String str = strs[j];
                 if (i == str.length()) {
                     return result.toString();
                 } else {
-                    current = str.charAt(i);
-                    set.add(current);
-                    if (set.size() > 1) {
-                        return result.toString();
+                    if (j == 0) {
+                        current = str.charAt(i);
+                    } else {
+                        if (current != str.charAt(i)) {
+                            return result.toString();
+                        }
                     }
                 }
             }

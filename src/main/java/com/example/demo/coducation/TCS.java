@@ -58,13 +58,13 @@ public class TCS {
                     byte letter =(byte) (bytes[i + 1] - bytes[i]) ;
                     list.add(letter);
                     i++;
-                    System.out.println(letter);
+                    System.out.println(letter+256);
                 }else {
                     byte letter = (count % 2 == 0) ?  (byte) (bytes[i + 1] - bytes[i] - fourTeen) : (byte) (bytes[i + 1] - bytes[i] - fifthTeen);
                     list.add(letter);
                     count++;
                     i++;
-                    System.out.println(letter);
+                    System.out.println(letter+256);
                 }
             } else if (bytes[i] == fortyMinus7) {
                 if (i == 0){
