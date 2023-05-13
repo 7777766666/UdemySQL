@@ -1,11 +1,15 @@
 package com.example.demo.matrix;
 
-import java.util.Arrays;
 
 public class ReverseMatrix {
 
+    static final String s3 = "При";
+    static final String s4 = "вет";
     public static void main(String[] args) {
-        System.out.println();
+        String s11 = "Привет";
+        String s1 = "При";
+        String s22 = s3 + s4;
+        System.out.println(s11 == s22);
 
         int size = 3;
         int start = 1;
@@ -28,7 +32,19 @@ public class ReverseMatrix {
         }
 
 
+        int xxx = 888;
+        funFunction(xxx);
+        String s = funFunction(xxx);
+
+
     }
+
+
+    private static String funFunction(int xxx) {
+        String s = String.valueOf(xxx);
+        return s;
+    }
+
 
     public static int[][] rotate(int[][] matrix) {
 
@@ -64,5 +80,6 @@ public class ReverseMatrix {
 
         return matrix;
     }
+
 
 }
